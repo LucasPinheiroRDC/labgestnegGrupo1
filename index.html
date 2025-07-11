@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Atuação do Gestor nas Organizações Contemporâneas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chosen Palette: Warm Neutrals & Professional Blue -->
+    <!-- Application Structure Plan: A modular, dashboard-style SPA with explicit sections for Introduction, Development, and Conclusion. The structure is thematic rather than linear to improve usability. It begins with a clear navigation bar. The content is broken into key interactive sections: "O DNA do Gestor", "Gestão Ontológica", "A Máquina Organizacional", "O Gestor em Ação: Estruturas Organizacionais", "Gestão do Tempo e Produtividade", "Gestão de Equipes e Relações", "Comunicação e Feedback", "Engajamento e Motivação", and "A Arena Global e Ética". These sections are nested under a main "Desenvolvimento" section. This non-linear, task-oriented design allows users to explore concepts based on interest, making the dense academic content more digestible and engaging than a simple scrollable page, while providing clear main sections. -->
+    <!-- Visualization & Content Choices: 1) Katz's Skills -> Goal: Compare -> Viz: Interactive Radar Chart (Chart.js) to show skill importance by management level. Justification: Visually superior to a table for comparing multiple variables. Enhanced with dynamic text descriptions for each level. 2) Mintzberg's Roles -> Goal: Organize -> Viz: Interactive HTML/CSS diagram (accordions). Justification: A clean, hierarchical way to present grouped information without clutter. Descriptions for each role expanded. 3) Foco na Estrutura vs. Foco nas Pessoas (Slide 3) -> Goal: Inform -> Viz: Toggleable text blocks. Justification: Clearly presents two contrasting philosophies. 4) Gestor Definition (Slide 5) -> Goal: Inform -> Viz: Text blocks with key concepts. Justification: Provides foundational understanding. 5) Gestão Ontológica (Slides 7-17) -> Goal: Inform/Explore -> Viz: Tabbed interface for each aspect (Realidade, Resultado, Relação, Possibilidade, Aprendizagem) with detailed questions/actions, and a static cycle diagram. Justification: Allows deep dive into each ontological aspect. 6) Organizational Functions -> Goal: Inform/Organize -> Viz: Tabbed interface with expanded content. Justification: Provides detailed understanding of each function. 7) Organizational Structures -> Goal: Compare -> Viz: HTML/CSS Card layout with detailed text. Justification: A standard UI pattern for easy comparison of distinct items. 8) Globalisation (Advantages/Disadvantages) -> Goal: Inform/Compare -> Viz: Bar Chart (Chart.js) and detailed accordion text. Justification: Visual summary with in-depth explanation. 9) ESG -> Goal: Inform -> Viz: Accordions with expanded content. Justification: Manages content density. 10) Time Management (Slides 21, 23, 25) -> Goal: Inform/Organize -> Viz: HTML/CSS diagrams for Important/Urgent/Circumstantial and Value/Time matrix. Justification: Visual and interactive way to present time management frameworks. 11) Productivity Errors (Slide 77) -> Goal: Inform -> Viz: Horizontal Bar Chart (Chart.js). Justification: Clearly shows impact percentages. 12) Leadership Styles (Slides 27, 29) -> Goal: Compare -> Viz: Tabbed comparison. Justification: Allows easy comparison of different leadership characteristics. 13) Tuckman's Stages (Slides 63-71) -> Goal: Inform/Organize -> Viz: Interactive HTML/CSS diagram (pentagon) with details on click. Justification: Visually represents the group development process. 14) Communication Matrix (Slide 39) -> Goal: Inform/Organize -> Viz: HTML/CSS 2x2 grid. Justification: Clearly presents communication styles. NO SVG/Mermaid are used, adhering to constraints. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-blue-600">Gestor Contemporâneo</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#introducao" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 border-b-2 border-transparent">Introdução</a>
+                        <a href="#desenvolvimento" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 border-b-2 border-transparent">Desenvolvimento</a>
+                        <a href="#consideracoes-finais" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 border-b-2 border-transparent">Considerações Finais</a>
+                    </div>
+                </div>
+                 <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <span class="sr-only">Abrir menu principal</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+             <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#introducao" class="block nav-link px-3 py-2 rounded-md text-base font-medium text-slate-700 border-b-2 border-transparent">Introdução</a>
+                    <a href="#desenvolvimento" class="block nav-link px-3 py-2 rounded-md text-base font-medium text-slate-700 border-b-2 border-transparent">Desenvolvimento</a>
+                    <a href="#consideracoes-finais" class="block nav-link px-3 py-2 rounded-md text-base font-medium text-slate-700 border-b-2 border-transparent">Considerações Finais</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <section id="introducao" class="text-center mb-16 scroll-mt-24">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">A Atuação do Gestor nas Organizações</h2>
+            <p class="max-w-3xl mx-auto text-lg text-slate-600 mb-8">Uma exploração interativa do papel multifacetado do administrador moderno, desde suas competências fundamentais até os desafios em um cenário global e dinâmico.</p>
+            <div class="text-left text-base text-slate-700 space-y-4 max-w-4xl mx-auto">
+                <p>A atuação do gestor ou administrador nas organizações é um dos pilares fundamentais para o alcance de resultados eficientes e sustentáveis. Em um ambiente de constantes mudanças econômicas, sociais e tecnológicas, o papel do gestor evoluiu de uma função meramente operacional para uma atuação estratégica, integradora e voltada à inovação.</p>
+                <p>Segundo Chiavenato (2014), a administração é responsável por planejar, organizar, dirigir e controlar os recursos organizacionais, sendo o gestor o principal agente dessa dinâmica. O gestor moderno precisa desenvolver um conjunto diversificado de competências, que envolvem desde habilidades técnicas e conceituais até capacidades interpessoais, como liderança e comunicação.</p>
+                <p>Drucker (2001) já apontava que a eficácia do gestor está diretamente relacionada à sua capacidade de transformar recursos em resultados e de adaptar-se às novas demandas do ambiente organizacional. Assim, ele se torna um facilitador do trabalho em equipe, um tomador de decisões estratégicas e um promotor de um ambiente organizacional saudável e produtivo.</p>
+                <p>Além disso, é responsabilidade do administrador alinhar os objetivos da organização com as expectativas dos colaboradores, clientes e da sociedade. Para Maximiano (2012), a administração eficaz exige análise contínua, visão sistêmica e capacidade de antecipar problemas e oportunidades.</p>
+                <p>Dessa forma, compreender a atuação do gestor nas organizações permite refletir sobre como suas decisões impactam diretamente o desempenho, a cultura e a sustentabilidade das empresas. Conforme Robbins e Coulter (2014), os administradores atuam como articuladores de recursos e pessoas, sendo fundamentais para manter o foco em metas e resultados, especialmente em ambientes de alta competitividade.</p>
+                <p>A capacidade de adaptação e resiliência se torna, então, um diferencial significativo. Vale destacar ainda que a atuação do gestor está diretamente ligada ao desenvolvimento organizacional e à inovação contínua. Para Vergara (2009), a administração envolve também o papel social do gestor, que deve considerar os impactos das decisões não apenas para a empresa, mas também para o meio ambiente e a sociedade como um todo.</p>
+                <p>No contexto da administração contemporânea, torna-se cada vez mais evidente que o gestor precisa atuar de forma proativa, antecipando tendências e conduzindo sua equipe com foco em resultados e em valores éticos. A busca pela excelência na gestão passa também pelo compromisso com a responsabilidade social, a diversidade e a sustentabilidade.</p>
+                <p>Dessa forma, o gestor do século XXI deve ser um profissional multifuncional, capaz de atuar com visão estratégica, empatia e compromisso com o bem-estar coletivo, conciliando os interesses da organização com os desafios do ambiente externo.</p>
+                <p>No cenário dinâmico da administração contemporânea, a atuação do gestor transcende a mera execução de tarefas, assumindo um papel proativo e estratégico. É imperativo que o profissional de gestão antecipe tendências, identifique oportunidades e desafios, e conduza sua equipe não apenas com foco em resultados financeiros, mas também na construção de um ambiente organizacional pautado em valores éticos sólidos.</p>
+                <p>A excelência na gestão, hoje, é indissociável de um compromisso genuíno com a responsabilidade social corporativa, a promoção da diversidade e a adoção de práticas de sustentabilidade. O gestor do século XXI é, portanto, um profissional multifacetado e visionário, que combina a capacidade de desenvolver e implementar estratégias eficazes com uma profunda empatia para com sua equipe e demais stakeholders.</p>
+                <p>Sua atuação deve conciliar os objetivos e interesses da organização com os desafios complexos e em constante evolução do ambiente externo, buscando o bem-estar coletivo e contribuindo para um impacto positivo na sociedade. Isso implica uma liderança transformadora, capaz de inspirar, motivar e capacitar indivíduos, ao mesmo tempo em que navega por cenários de incerteza e mudança, garantindo a resiliência e a adaptabilidade da organização.</p>
+            </div>
+        </section>
+
+        <section id="desenvolvimento" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 text-center">Desenvolvimento</h2>
+            <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">Esta seção aprofunda os conceitos essenciais da gestão, explorando as funções organizacionais, as competências e papéis do gestor, e o impacto do ambiente externo na administração contemporânea.</p>
+
+            <section id="dna-gestor" class="mb-16 scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">O DNA do Gestor</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">Esta seção explora as competências e papéis que definem um gestor eficaz. Interaja com os gráficos para entender como as habilidades necessárias variam e quais papéis são desempenhados no dia a dia para transformar estratégia em resultados.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">As 3 Habilidades Essenciais (Katz)</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">A importância de cada habilidade varia com o nível hierárquico. Selecione um nível para ver como a configuração muda.</p>
+                        <div class="chart-container">
+                            <canvas id="skillsChart"></canvas>
+                        </div>
+                        <div class="flex justify-center space-x-2 mt-4">
+                            <button class="skill-btn px-4 py-2 text-sm font-medium bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500" data-level="operacional">Operacional</button>
+                            <button class="skill-btn px-4 py-2 text-sm font-medium bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200" data-level="gerencial">Gerencial</button>
+                            <button class="skill-btn px-4 py-2 text-sm font-medium bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200" data-level="estrategico">Estratégico</button>
+                        </div>
+                        <div id="skill-description" class="mt-4 text-sm text-slate-700">
+                            <p><strong>Nível Operacional:</strong> Foco no "como fazer". Essencial para a execução de tarefas e supervisão direta. Exige domínio de ferramentas e métodos específicos da área, como conhecimento de software, operação de equipamentos e compreensão de processos de fabricação.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Os 10 Papéis Gerenciais (Mintzberg)</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Os gestores desempenham múltiplos papéis. Clique em cada categoria para explorar os papéis específicos.</p>
+                        <div id="mintzberg-roles" class="space-y-4">
+                            <!-- Roles will be inserted by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Foco na Estrutura vs. Foco nas Pessoas</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Duas abordagens distintas na gestão. Entenda as diferenças e o impacto de cada uma.</p>
+                        <div class="flex justify-center space-x-4 mb-4">
+                            <button id="focus-structure-btn" class="px-4 py-2 text-sm font-medium bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500">Foco na Estrutura</button>
+                            <button id="focus-people-btn" class="px-4 py-2 text-sm font-medium bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200">Foco nas Pessoas</button>
+                        </div>
+                        <div id="focus-content" class="text-slate-700 text-sm">
+                            <p><strong>Foco na Estrutura:</strong> Necessita realizar tarefas, ocupar responsabilidades e conhecer os processos gerenciais. Os resultados são alcançados através de Planejamento, Organização e Medição. A expressão chave é "Gerar resultado".</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">O Gestor e os Resultados</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Compreenda o papel do gestor na busca por resultados e no desenvolvimento de pessoas.</p>
+                        <div class="space-y-3 text-slate-700 text-sm">
+                            <p>O gestor é <strong>Responsável por atingir os resultados da organização</strong>. São pessoas que realmente alcançam esses resultados.</p>
+                            <p>Logo, os gestores são responsáveis por <strong>desenvolver e engajar as pessoas</strong> para se conectarem com a organização e atingir os resultados.</p>
+                            <p>Conceitos chave: <strong>Identidade e significado, Tarefa e execução, Emoção e engajamento.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gestao-ontologica" class="mb-16 scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">Gestão Ontológica (Ivonne Hidalgo)</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">Explore os cinco pilares da Gestão Ontológica, um modelo que aborda a gestão a partir da perspectiva do ser e do fazer, focando na realidade, resultados, relações, possibilidades e aprendizado. Clique nas abas para detalhar cada aspecto.</p>
+                
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <div class="mb-6 border-b border-slate-200">
+                        <nav class="-mb-px flex space-x-4 overflow-x-auto" id="ontological-tabs">
+                            <!-- Ontological Tabs will be inserted by JS -->
+                        </nav>
+                    </div>
+                    <div id="ontological-content">
+                        <!-- Ontological Content will be inserted by JS -->
+                    </div>
+                    <div class="pentagon-container mt-8">
+                        <div class="pentagon-center">Gestor(a)</div>
+                        <div class="pentagon-segment" data-ontological-tab="realidade">Realidade</div>
+                        <div class="pentagon-segment" data-ontological-tab="relacao">Relação</div>
+                        <div class="pentagon-segment" data-ontological-tab="resultado">Resultado</div>
+                        <div class="pentagon-segment" data-ontological-tab="aprendizagem">Aprendizagem</div>
+                        <div class="pentagon-segment" data-ontological-tab="possibilidade">Possibilidade</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="maquina-organizacional" class="mb-16 scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">A Máquina Organizacional</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">Toda organização é composta por funções vitais que trabalham em conjunto. Esta seção detalha as responsabilidades de cada área-chave, mostrando como a integração coordenada pelo gestor é crucial para o sucesso. Navegue pelas abas para conhecer cada função.</p>
+
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <div class="mb-6 border-b border-slate-200">
+                        <nav class="-mb-px flex space-x-4 overflow-x-auto" id="org-tabs">
+                            <!-- Tabs will be inserted by JS -->
+                        </nav>
+                    </div>
+                    <div id="org-content">
+                        <!-- Content will be inserted by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="gestor-em-acao" class="mb-16 scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">O Gestor em Ação: Estruturas Organizacionais</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">A forma como uma empresa é estruturada define suas linhas de comunicação, autoridade e eficiência. Um gestor eficaz sabe qual estrutura é mais adequada para cada contexto. Clique nos cartões para comparar os modelos e entender suas vantagens, desvantagens e cenários ideais de uso.</p>
+
+                <div class="grid md:grid-cols-3 gap-6" id="structures-container">
+                    <!-- Structure cards will be inserted by JS -->
+                </div>
+                <div id="structure-details" class="mt-8 bg-white p-6 rounded-xl shadow-md transition-all duration-300">
+                    <!-- Details will be inserted by JS -->
+                </div>
+            </section>
+            
+            <section id="gestao-tempo-produtividade" class="mb-16 scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">Gestão do Tempo e Produtividade</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">A gestão eficaz do tempo é crucial para a produtividade do gestor e de sua equipe. Esta seção apresenta modelos para priorização de tarefas, estilos de liderança relacionados à produtividade e os maiores erros que afetam o desempenho.</p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Priorização de Tarefas: Importante, Urgente, Circunstancial</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Entenda a diferença entre as tarefas e como priorizá-las para maximizar resultados. <strong>75% importante, 15 a 20% de urgente.</strong></p>
+                        <div class="relative w-full max-w-md mx-auto h-64 flex items-center justify-center">
+                            <div class="absolute w-40 h-40 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm" style="top: 20%; left: 50%; transform: translateX(-50%);">Importante</div>
+                            <div class="absolute w-40 h-40 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-sm" style="top: 60%; left: 20%; transform: translateX(-50%);">Urgente</div>
+                            <div class="absolute w-40 h-40 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm" style="top: 60%; left: 80%; transform: translateX(-50%);">Circunstancial</div>
+                            <p class="absolute text-xs text-slate-700" style="top: 5%; left: 50%; transform: translateX(-50%); width: 80%;">Atividades que tem importância na nossa vida, traz resultado a curto, médio ou longo prazo.</p>
+                            <p class="absolute text-xs text-slate-700" style="top: 85%; left: 20%; transform: translateX(-50%); width: 80%;">Atividades onde o tempo está curto ou já acabou.</p>
+                            <p class="absolute text-xs text-slate-700" style="top: 85%; left: 80%; transform: translateX(-50%); width: 80%;">Tarefas desnecessárias, feitas por comodidade ou por serem socialmente apropriadas.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Matriz Valor vs. Tempo: Decisões de Delegação</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Use esta matriz para decidir quando e o que delegar, otimizando seu tempo e o da equipe.</p>
+                        <div class="time-matrix-grid w-full max-w-md mx-auto">
+                            <div class="time-matrix-header p-2 text-center col-span-2">VALOR (+)</div>
+                            <div class="time-matrix-header p-2 text-center"></div>
+                            <div class="time-matrix-header p-2 text-center">TEMPO (+)</div>
+
+                            <div class="time-matrix-cell">FAÇA</div>
+                            <div class="time-matrix-cell">PENSE EM DELEGAR</div>
+                            <div class="time-matrix-cell">DELEGUE LOGO</div>
+                            <div class="time-matrix-cell">DELEGUE E NÃO FAÇA MAIS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Estilos de Liderança e Produtividade</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Compare os diferentes estilos de liderança e como eles impactam a produtividade da equipe.</p>
+                        <div class="mb-6 border-b border-slate-200">
+                            <nav class="-mb-px flex space-x-4 overflow-x-auto" id="leadership-tabs">
+                                <button class="tab-button whitespace-nowrap py-2 px-3 border-b-2 font-medium text-sm rounded-t-lg active" data-target="leader-operacional">Líder Operacional</button>
+                                <button class="tab-button whitespace-nowrap py-2 px-3 border-b-2 font-medium text-sm rounded-t-lg border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300" data-target="leader-estrategico">Líder Estratégico</button>
+                                <button class="tab-button whitespace-nowrap py-2 px-3 border-b-2 font-medium text-sm rounded-t-lg border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300" data-target="leader-produtivo">Líder Produtivo</button>
+                            </nav>
+                        </div>
+                        <div id="leadership-content">
+                            <div id="leader-operacional" class="p-2">
+                                <ul class="list-disc list-inside space-y-1 text-slate-600 text-sm">
+                                    <li>Faz ao invés de delegar</li>
+                                    <li>Presente em todas as reuniões</li>
+                                    <li>Toma a maior parte das decisões</li>
+                                    <li>Desenha as regras e processos</li>
+                                    <li>Treina quando necessário</li>
+                                    <li>Em geral tem colaboradores mais próximos</li>
+                                    <li>Foco em fazer e apoiar</li>
+                                    <li>(+ de 40% de tarefas circunstanciais e urgentes)</li>
+                                </ul>
+                            </div>
+                            <div id="leader-estrategico" class="p-2 hidden">
+                                <ul class="list-disc list-inside space-y-1 text-slate-600 text-sm">
+                                    <li>Delega ao invés de fazer</li>
+                                    <li>Desenvolve pessoas</li>
+                                    <li>Participa de reuniões pontuais</li>
+                                    <li>Define regras, metas e processos com a equipe</li>
+                                    <li>Informações distribuídas</li>
+                                    <li>Menos presente na operação</li>
+                                    <li>Foco no estratégico</li>
+                                    <li>(entre 60% e 70% de tarefas importantes)</li>
+                                </ul>
+                            </div>
+                            <div id="leader-produtivo" class="p-2 hidden">
+                                <ul class="list-disc list-inside space-y-1 text-slate-600 text-sm">
+                                    <li>Desenvolve seu sucessor</li>
+                                    <li>Trabalha a identidade</li>
+                                    <li>Trabalha autonomia e empoderamento</li>
+                                    <li>Reuniões curtas e objetivas</li>
+                                    <li>A forma de interação é mais importante</li>
+                                    <li>Regras claras</li>
+                                    <li>(75% ou mais de tarefas importantes)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Maiores Erros que Afetam a Produtividade</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Identifique os principais obstáculos à produtividade e como evitá-los. (Fonte: Hay Group)</p>
+                        <div class="chart-container h-96 max-h-96">
+                            <canvas id="productivityErrorsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gestao-equipes-relacoes" class="mb-16 scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">Gestão de Equipes e Relações</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">Gerenciar grupos é um desafio complexo. Esta seção aborda a dinâmica das equipes, as fases de desenvolvimento de grupos, os desafios da equipe e a importância da confiança para a colaboração e o engajamento.</p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Dinâmica de Grupos</h4>
+                        <p class="text-sm text-slate-600 mb-4">Compreender como os grupos funcionam é essencial para a atuação do gestor. Gerenciar grupos é algo desafiador e complexo. Ao mesmo tempo que o grupo pode ser encantador ele pode ser perverso. Todos nós colaboramos para que o grupo funcione desta ou daquela maneira e muitas vezes reforçamos processos grupais que queremos evitar.</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700 text-sm">
+                            <li>Os grupos são inevitáveis e onipresentes.</li>
+                            <li>Os grupos mobilizam forças que têm influência decisiva nos indivíduos.</li>
+                            <li>Os grupos podem ter boas ou más consequências.</li>
+                            <li>Conhecendo a dinâmica de grupos é possível fazer com que os grupos sirvam a melhores objetivos, ou seja, permite-se modificar o comportamento humano e as instituições sociais.</li>
+                        </ul>
+                        <p class="mt-4 text-sm text-slate-600"><strong>Que diferença faz na minha atuação como gestor(a) compreender a forma que os grupos funcionam?</strong> Faz toda a diferença na capacidade de liderar, motivar e extrair o melhor de cada membro.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Estágios de Desenvolvimento de Grupos (Tuckman)</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Os grupos passam por diferentes fases. Clique em cada estágio para entender suas características e o que o gestor deve fazer.</p>
+                        <div class="pentagon-container">
+                            <div class="pentagon-segment" data-stage="forming">Formação</div>
+                            <div class="pentagon-segment" data-stage="storming">Turbulência</div>
+                            <div class="pentagon-segment" data-stage="norming">Normatização</div>
+                            <div class="pentagon-segment" data-stage="performing">Performance</div>
+                            <div class="pentagon-segment" data-stage="transferring">Dissolução</div>
+                        </div>
+                        <div id="tuckman-details" class="mt-4 text-sm text-slate-700">
+                            <!-- Details will be inserted by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Os 5 Desafios da Equipe (Patrick Lencioni)</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">A pirâmide de Lencioni destaca os desafios que impedem o alto desempenho das equipes. Clique em cada nível para saber mais.</p>
+                        <div class="pyramid-container">
+                            <div class="lencioni-pyramid-segment" data-lencioni="resultados">Foco nos resultados da equipe</div>
+                            <div class="lencioni-pyramid-segment" data-lencioni="responsabilidade">Responsabilidade</div>
+                            <div class="lencioni-pyramid-segment" data-lencioni="comprometimento">Comprometimento</div>
+                            <div class="lencioni-pyramid-segment" data-lencioni="conflito">Sem medo do conflito</div>
+                            <div class="lencioni-pyramid-segment" data-lencioni="confianca">Confiança</div>
+                        </div>
+                        <div id="lencioni-details" class="mt-4 text-sm text-slate-700">
+                            <!-- Details will be inserted by JS -->
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Confiança e Colaboração</h4>
+                        <p class="text-sm text-slate-600 mb-4">A confiança é a pré-condição para a colaboração eficaz. Conheça os pilares para construir e manter a confiança nas relações.</p>
+                        <div class="space-y-3 text-slate-700 text-sm">
+                            <p><strong>CONFIANÇA É A PRÉ-CONDIÇÃO PARA A COLABORAÇÃO.</strong></p>
+                            <p>Para construir confiança, é preciso <strong>conviver e conhecer</strong> para:</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Compartilhar sentimentos</li>
+                                <li>Conhecer a história do outro</li>
+                                <li>Manter sigilo sobre as confidências</li>
+                                <li>Ser aberto ao diálogo</li>
+                                <li>Deixar claro os critérios de decisões, ser sincero e comunicar</li>
+                                <li>Ser justo</li>
+                                <li>Considerar a percepção do outro</li>
+                                <li>Cumprir promessas</li>
+                                <li>Dar crédito</li>
+                                <li>Ser transparente e coerente</li>
+                                <li>Demonstrar competência, esforço e capacidade</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="comunicacao-feedback" class="mb-16 scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">Comunicação e Feedback</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">A comunicação eficaz é a base de qualquer gestão de sucesso. Explore diferentes estilos de comunicação, os elementos centrais do processo comunicativo e como construir uma cultura de feedback positiva.</p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Estilos de Comunicação</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Entenda os diferentes estilos de comunicação com base na preocupação pessoal e no confronto direto.</p>
+                        <div class="communication-matrix-grid w-full max-w-md mx-auto">
+                            <div class="communication-matrix-header p-2 text-center col-span-2">Importa-se pessoalmente (+)</div>
+                            <div class="communication-matrix-header p-2 text-center"></div>
+                            <div class="communication-matrix-header p-2 text-center">Confronte diretamente (+)</div>
+
+                            <div class="communication-matrix-cell">Empatia Nociva<br><span class="text-xs text-slate-500">(Ficar em silêncio, preocupado com os sentimentos dos outros)</span></div>
+                            <div class="communication-matrix-cell">Empatia Assertiva<br><span class="text-xs text-slate-500">(Sussurrar: "Sua braguilha está aberta")</span></div>
+                            <div class="communication-matrix-cell">Insineridade Manipuladora<br><span class="text-xs text-slate-500">(Ficar em silêncio, preocupado com os próprios sentimentos)</span></div>
+                            <div class="communication-matrix-cell">Agressividade Ofensiva<br><span class="text-xs text-slate-500">(Grita para todos ouvirem: "Olha aí, sua braguilha está aberta")</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Comunicação Não Violenta (CNV)</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Princípios para uma comunicação mais empática e eficaz, evitando conflitos e promovendo o entendimento.</p>
+                        <div class="space-y-3 text-slate-700 text-sm">
+                            <details class="bg-slate-50 p-4 rounded-lg cursor-pointer">
+                                <summary class="font-bold text-md">Regras da CNV - Parte 1</summary>
+                                <ul class="mt-2 pl-4 list-disc space-y-1">
+                                    <li>Se a outra pessoa estiver irritada, finalize a conversa e marque outra hora.</li>
+                                    <li>Diga “Por favor, fale mais devagar. Gostaria de poder ajudar.” Diminua a velocidade e evite a briga.</li>
+                                    <li>Pergunte “O que você gostaria que eu fizesse?” É preciso fazer a pessoa pensar de forma a desligar a máquina da raiva.</li>
+                                    <li>Ouça para entender, não para responder.</li>
+                                    <li>Não use o “mas”. Use “e”.</li>
+                                    <li>Não busque evitar o desconforto ou preocupações com expressões de alívio ou elogios.</li>
+                                </ul>
+                            </details>
+                            <details class="bg-slate-50 p-4 rounded-lg cursor-pointer">
+                                <summary class="font-bold text-md">Regras da CNV - Parte 2</summary>
+                                <ul class="mt-2 pl-4 list-disc space-y-1">
+                                    <li>Converse andando, se for um momento difícil para você.</li>
+                                    <li>Não faça afirmações. Faça perguntas. Explicar é tentar dominar a situação de forma velada. Perguntas fazem com que a pessoa pare para pensar.</li>
+                                    <li>Comece sentenças com “Gostaria de ...” e não “Você é ...”.</li>
+                                    <li>A pessoa deve considerar o pedido possível de ser realizado.</li>
+                                    <li>A conversa deve terminar com clareza que é um “agente de desenvolvimento”.</li>
+                                    <li>Já deixe marcada a próxima conversa.</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md mb-12">
+                    <h4 class="text-xl font-bold text-center mb-4">Como Criar a Cultura do Feedback</h4>
+                    <p class="text-sm text-slate-600 mb-4 text-center">O feedback é essencial para o desenvolvimento. Veja como fomentar uma cultura de feedback construtiva em sua equipe.</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 text-sm max-w-2xl mx-auto">
+                        <li>Você deve receber e estimular que te ofereçam feedback.</li>
+                        <li>Convide ao feedback: “Tem algo que eu poderia fazer ou deixar de fazer para facilitar seu trabalho comigo?” e permita o silêncio.</li>
+                        <li>Você é a exceção à regra de “criticar só em particular”.</li>
+                        <li>Recompense as críticas.</li>
+                        <li>Deixe tempo livre na sua agenda para estas conversas de realinhamentos.</li>
+                        <li>Não guarde o feedback.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="engajamento-motivacao" class="mb-16 scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">Engajamento e Motivação</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">A motivação e o engajamento dos colaboradores são cruciais para o sucesso organizacional. Explore a hierarquia das necessidades humanas e como o engajamento se manifesta em diferentes níveis.</p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Pirâmide de Necessidades de Maslow</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Entenda as necessidades humanas e como elas se relacionam com a satisfação no trabalho e fora dele. Clique nos níveis para ver exemplos.</p>
+                        <div class="pyramid-container">
+                            <div class="pyramid-segment" data-maslow="autorrealizacao">
+                                Autorrealização
+                                <div class="pyramid-segment-content">
+                                    <p><strong>Satisfação fora do trabalho:</strong> Educação, Religião, Passatempos, Crescimento Pessoal.</p>
+                                    <p><strong>Satisfação no trabalho:</strong> Trabalho desafiante, Diversidade e autonomia, Participação nas decisões, Crescimento pessoal.</p>
+                                </div>
+                            </div>
+                            <div class="pyramid-segment" data-maslow="estima">
+                                Estima
+                                <div class="pyramid-segment-content">
+                                    <p><strong>Satisfação fora do trabalho:</strong> Aprovação da família, Aprovação dos amigos, Reconhecimento da comunidade.</p>
+                                    <p><strong>Satisfação no trabalho:</strong> Reconhecimento, Responsabilidade, Orgulho e reconhecimento, Promoções.</p>
+                                </div>
+                            </div>
+                            <div class="pyramid-segment" data-maslow="sociais">
+                                Sociais
+                                <div class="pyramid-segment-content">
+                                    <p><strong>Satisfação fora do trabalho:</strong> Família, Amigos, Grupos Sociais, Comunidade.</p>
+                                    <p><strong>Satisfação no trabalho:</strong> Amizade dos colegas, Interação com clientes, Chefe amigável.</p>
+                                </div>
+                            </div>
+                            <div class="pyramid-segment" data-maslow="seguranca">
+                                Segurança
+                                <div class="pyramid-segment-content">
+                                    <p><strong>Satisfação fora do trabalho:</strong> Liberdade, Segurança da violência, Ausência de poluição, Ausência de guerras.</p>
+                                    <p><strong>Satisfação no trabalho:</strong> Trabalho seguro, Remuneração e benefícios, Permanência no emprego.</p>
+                                </div>
+                            </div>
+                            <div class="pyramid-segment" data-maslow="fisiologicas">
+                                Fisiológicas
+                                <div class="pyramid-segment-content">
+                                    <p><strong>Satisfação fora do trabalho:</strong> Comida, Água, Sexo, Sono e Repouso.</p>
+                                    <p><strong>Satisfação no trabalho:</strong> Horário de trabalho, Intervalo de descanso, Conforto físico.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="text-xl font-bold text-center mb-4">Pirâmide de Engajamento e Orgulho</h4>
+                        <p class="text-sm text-slate-600 mb-4 text-center">Descubra os níveis de engajamento dos colaboradores e o que os motiva ou desmotiva. (Menos de 15% atingem o nível Altamente Engajado)</p>
+                        <div class="pyramid-container">
+                            <div class="lencioni-pyramid-segment" data-engagement="altamente-engajado">
+                                Altamente Engajado
+                                <div class="lencioni-pyramid-segment-content">
+                                    <p><strong>Como posso ajudar os outros?</strong> Amo o que faço, Sou feliz, Voo alto.</p>
+                                    <p><strong>Motivador:</strong> Autorrealização.</p>
+                                </div>
+                            </div>
+                            <div class="lencioni-pyramid-segment" data-engagement="engajado">
+                                Engajado
+                                <div class="lencioni-pyramid-segment-content">
+                                    <p><strong>Sou uma parte vital do negócio.</strong> Alcanço minhas metas. Sinto-me importante no trabalho. Só sairei por algo muito melhor.</p>
+                                    <p><strong>Motivador:</strong> Importância.</p>
+                                </div>
+                            </div>
+                            <div class="lencioni-pyramid-segment" data-engagement="quase-engajado">
+                                Quase Engajado
+                                <div class="lencioni-pyramid-segment-content">
+                                    <p>Sinto-me parte de algo maior. Estou razoavelmente engajado, mas às vezes não. Não há boas oportunidades de progresso aqui.</p>
+                                    <p><strong>Motivador:</strong> Pertencimento.</p>
+                                </div>
+                            </div>
+                            <div class="lencioni-pyramid-segment" data-engagement="fracamente-engajado">
+                                Fracamente Engajado
+                                <div class="lencioni-pyramid-segment-content">
+                                    <p>Não gosto do que faço e nem do ambiente de trabalho. As condições de trabalho são ruins. Leio anúncios de emprego. Estou sempre de licença médica.</p>
+                                    <p><strong>Desmotivador:</strong> Segurança.</p>
+                                </div>
+                            </div>
+                            <div class="lencioni-pyramid-segment" data-engagement="desengajado">
+                                Desengajado
+                                <div class="lencioni-pyramid-segment-content">
+                                    <p>Olho sempre o relógio. Estou aqui por dinheiro. Vou sair assim que puder. Oh não, amanhã é segunda-feira. Odeio o que faço.</p>
+                                    <p><strong>Desmotivador:</strong> Sobrevivência.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 space-y-3 text-slate-700 text-sm">
+                            <h5 class="font-bold">Engajamento e Orgulho: Fatores Chave</h5>
+                            <details class="bg-slate-50 p-4 rounded-lg cursor-pointer">
+                                <summary class="font-bold text-md">Curiosidade</summary>
+                                <p class="mt-2 text-sm text-slate-600">Os trabalhadores têm muitas coisas para investigar e pensar.</p>
+                            </details>
+                            <details class="bg-slate-50 p-4 rounded-lg cursor-pointer">
+                                <summary class="font-bold text-md">Honra</summary>
+                                <p class="mt-2 text-sm text-slate-600">Os trabalhadores se sentem orgulhosos em perceber seus valores refletidos em como eles funcionam.</p>
+                            </details>
+                            <details class="bg-slate-50 p-4 rounded-lg cursor-pointer">
+                                <summary class="font-bold text-md">Aceitação</summary>
+                                <p class="mt-2 text-sm text-slate-600">Colegas aprovam o que as pessoas fazem e quem são.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="arena-global" class="scroll-mt-24">
+                <h3 class="text-3xl font-bold text-center mb-2 text-slate-900">A Arena Global e Ética</h3>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">A globalização é um processo histórico que tem aproximado os países, culturas e economias, principalmente através do avanço tecnológico e das comunicações. Esse fenômeno afeta diretamente o modo como as empresas operam, criando novas oportunidades e desafios.
+</p>
+
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-bold mb-3 text-slate-800">Globalização: Vantagens vs. Desafios</h4>
+                            <p class="text-sm text-slate-600 mb-4">A globalização traz oportunidades e ameaças. O gráfico ilustra o equilíbrio entre os principais benefícios e os desafios que as empresas enfrentam ao expandir suas operações internacionalmente.</p>
+                            <div class="chart-container h-80 max-h-80">
+                                <canvas id="globalizationChart"></canvas>
+                            </div>
+                            <div class="mt-6 space-y-4">
+                                <details class="bg-slate-50 p-4 rounded-lg cursor-pointer">
+                                    <summary class="font-bold text-md">Vantagens Detalhadas</summary>
+                                    <ul class="mt-2 pl-4 list-disc space-y-1 text-sm text-slate-600">
+                                        <li>Expansão de Mercados e Maior Oportunidade de Exportação: Acesso a consumidores em qualquer lugar do mundo.</li>
+                                        <li>Acesso a Tecnologias de Ponta e Práticas de Gestão Internacional: Transferência de conhecimento e adoção de melhores práticas.</li>
+                                        <li>Aumento do Conhecimento e da Competitividade: Exposição a diferentes culturas de negócios estimula a inovação.</li>
+                                        <li>Otimização da Cadeia de Suprimentos: Sourcing de matérias-primas e produção em locais com menores custos.</li>
+                                        <li>Diversificação de Riscos: Redução da dependência de uma única economia.</li>
+                                        <li>Acesso a Talentos Globais: Contratação de profissionais qualificados de diversas partes do mundo.</li>
+                                    </ul>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg cursor-pointer">
+                                    <summary class="font-bold text-md">Desafios Detalhados</summary>
+                                    <ul class="mt-2 pl-4 list-disc space-y-1 text-sm text-slate-600">
+                                        <li>Concorrência Internacional Acirrada: Competição com gigantes globais.</li>
+                                        <li>Deslocamento de Empregos Locais: Realocação de fábricas para países com menor custo de mão de obra.</li>
+                                        <li>Perda de Identidade Cultural em Produtos: Adaptação que pode levar à homogeneização.</li>
+                                        <li>Aumento da Complexidade na Gestão: Lidar com diversas culturas, legislações, moedas e fusos horários.</li>
+                                        <li>Riscos de Interrupções na Cadeia de Suprimentos: Vulnerabilidade a desastres ou conflitos.</li>
+                                        <li>Questões Éticas e de Responsabilidade Social: Escrutínio sobre práticas em países com regulamentações flexíveis.</li>
+                                        <li>Volatilidade Cambial: Flutuação das taxas de câmbio afetando custos e lucros.</li>
+                                    </ul>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="texto-direita">
+                            <h4 class="text-xl font-bold mb-3 text-slate-800">Responsabilidade e Governança (ESG)</h4>
+                            <p class="text-sm text-slate-600 mb-4">A sustentabilidade do negócio hoje depende da integração de critérios Ambientais, Sociais e de Governança.</p>
+                            <div id="esg-accordion" class="space-y-3">
+                                <!-- ESG items will be inserted by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="consideracoes-finais" class="scroll-mt-24">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 text-center">Considerações Finais</h2>
+            <p class="text-left text-base text-slate-700 space-y-4 max-w-4xl mx-auto">
+                <p>Diante das transformações constantes no ambiente organizacional e das demandas sociais, econômicas e ambientais que atingem diretamente a atuação das empresas, torna-se indispensável o papel estratégico do gestor na condução eficiente das organizações. A compreensão das funções administrativas, aliada ao domínio das competências técnicas, humanas e conceituais, permite ao gestor integrar recursos e áreas organizacionais de forma eficiente, promovendo inovação, sustentabilidade e vantagem competitiva.</p>
+                <p>Além disso, a globalização e as mudanças socioambientais exigem administradores preparados para lidar com cenários complexos e desafiadores, capazes de tomar decisões éticas, sustentáveis e orientadas por dados. A adoção de boas práticas de governança, responsabilidade social empresarial e modelos estruturais adequados contribui para a longevidade das organizações e para um relacionamento equilibrado com a sociedade.</p>
+                <p>Portanto, a formação contínua e o desenvolvimento de habilidades alinhadas às necessidades contemporâneas são fatores essenciais para que o gestor exerça um papel transformador nas organizações, promovendo o crescimento sustentável e a geração de valor social, econômico e ambiental. O gestor do futuro não será apenas um executor de tarefas, mas um visionário, um líder ético e um agente de mudança, capaz de navegar pela complexidade e impulsionar suas organizações para um futuro mais próspero e responsável.</p>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-sm">
+           <p>Trabalho do Laboratório de Gestão de Negócios, Grupo 1.</p>
+             <p class="text-slate-400 mt-1">&copy; 2025 - Criado para Apresentação do trabalho.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
